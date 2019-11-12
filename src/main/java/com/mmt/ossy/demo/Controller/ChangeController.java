@@ -17,7 +17,7 @@ public class ChangeController {
     public String add(@RequestParam("id") int id) {
         ProcessModel process = new ProcessModel();
         process.setId(id);
-        process.setWorkTime(0);
+        process.setWorkTime((int) System.currentTimeMillis());
         process.setState(0);
         processmodelMapper.add(process);
         return "redirect:/";
@@ -26,6 +26,7 @@ public class ChangeController {
     @GetMapping("/change/{state}")
     public String readyToExecute(@RequestParam("id") int id,@PathVariable("state") int state) {
         processmodelMapper.updateById(id,state);
+        processmodelMapper.updateTime(id,(int)System.currentTimeMillis());
         return "redirect:/";
     }
 

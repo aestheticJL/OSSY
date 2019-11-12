@@ -27,7 +27,7 @@
             <input type="text" class="form-control" placeholder="Name" aria-describedby="sizing-addon1"
                    name="id" autocomplete="off">
             <button type="submit" class="btn btn-success btn-publish">
-                等待->执行
+                就绪->执行
             </button>
         </div>
     </form>
@@ -47,7 +47,7 @@
             <input type="text" class="form-control" placeholder="Name" aria-describedby="sizing-addon1"
                    name="id" autocomplete="off">
             <button type="submit" class="btn btn-success btn-publish">
-                阻塞->等待
+                阻塞->就绪
             </button>
         </div>
     </form>
@@ -57,7 +57,7 @@
             <input type="text" class="form-control" placeholder="Name" aria-describedby="sizing-addon1"
                    name="id" autocomplete="off">
             <button type="submit" class="btn btn-success btn-publish">
-                执行->等待
+                执行->就绪
             </button>
         </div>
     </form>
@@ -85,13 +85,13 @@
     </div>
 
     <div class=" col-md-12">
-        <h3>——————等待队列——————</h3>
+        <h3>——————就绪队列——————</h3>
     </div>
     <div th:each="process:${readyProcess}">
         <div class="col-md-1">
             <div class="navbar-brand alert alert-info " style="box-sizing: content-box;">
                 <span th:text="'进程'+${process.id}">进程</span>
-                <span>等待</span>
+                <span>就绪</span>
             </div>
         </div>
     </div>
