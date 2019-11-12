@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>FirstSY</title>
+    <meta http-equiv="Content-Type" content="text/html; charset = UTF-8"/>
+    <link rel="stylesheet" href="/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="/css/bootstrap-theme.min.css"/>
+    <link rel="stylesheet" href="/css/Begin.css"/>
+    <script src="/js/jquery-3.4.1.min.js" type="application/javascript"></script>
+    <script src="/js/bootstrap.min.js" type="application/javascript"></script>
+</head>
+<body>
+<div class="row">
+    <form action="/Add" class="col-md-2">
+        <div class="input-group input-group-lg frame">
+            <span class="input-group-addon" id="id">输入进程Id</span>
+            <input type="text" class="form-control" placeholder="Name" aria-describedby="sizing-addon1"
+                   name="id" autocomplete="off">
+            <button type="submit" class="btn btn-success btn-publish">
+                添加新的进程
+            </button>
+        </div>
+    </form>
+    <form th:action="@{'/change/'+'1'}" class="col-md-2">
+        <div class="input-group input-group-lg frame">
+            <span class="input-group-addon" id="readyToExecute">输入进程Id</span>
+            <input type="text" class="form-control" placeholder="Name" aria-describedby="sizing-addon1"
+                   name="id" autocomplete="off">
+            <button type="submit" class="btn btn-success btn-publish">
+                等待->执行
+            </button>
+        </div>
+    </form>
+    <form th:action="@{'/change/'+'9'}" class="col-md-2">
+        <div class="input-group input-group-lg frame">
+            <span class="input-group-addon" id="executeToChock">输入进程Id</span>
+            <input type="text" class="form-control" placeholder="Name" aria-describedby="sizing-addon1"
+                   name="id" autocomplete="off">
+            <button type="submit" class="btn btn-success btn-publish">
+                执行->阻塞
+            </button>
+        </div>
+    </form>
+    <form th:action="@{'/change/'+'0'}" class="col-md-2">
+        <div class="input-group input-group-lg frame">
+            <span class="input-group-addon" id="chockToReady">输入进程Id</span>
+            <input type="text" class="form-control" placeholder="Name" aria-describedby="sizing-addon1"
+                   name="id" autocomplete="off">
+            <button type="submit" class="btn btn-success btn-publish">
+                阻塞->等待
+            </button>
+        </div>
+    </form>
+    <form th:action="@{'/change/'+'0'}" class="col-md-2">
+        <div class="input-group input-group-lg frame">
+            <span class="input-group-addon" id="executeToReady">输入进程Id</span>
+            <input type="text" class="form-control" placeholder="Name" aria-describedby="sizing-addon1"
+                   name="id" autocomplete="off">
+            <button type="submit" class="btn btn-success btn-publish">
+                执行->等待
+            </button>
+        </div>
+    </form>
+    <form action="/Delete" class="col-md-2">
+        <div class="input-group input-group-lg frame">
+            <span class="input-group-addon" id="delete">输入进程Id</span>
+            <input type="text" class="form-control" placeholder="Name" aria-describedby="sizing-addon1"
+                   name="id" autocomplete="off">
+            <button type="submit" class="btn btn-success btn-publish">
+                删除该进程
+            </button>
+        </div>
+    </form>
+
+    <div class=" col-md-12">
+        <h3>——————执行队列——————</h3>
+    </div>
+    <div th:each="process:${executeProcess}">
+        <div class="col-md-1">
+            <div class="navbar-brand alert alert-success " style="box-sizing: content-box;">
+                <span th:text="'进程'+${process.id}">进程</span>
+                <span>执行中</span>
+            </div>
+        </div>
+    </div>
+
+    <div class=" col-md-12">
+        <h3>——————等待队列——————</h3>
+    </div>
+    <div th:each="process:${readyProcess}">
+        <div class="col-md-1">
+            <div class="navbar-brand alert alert-info " style="box-sizing: content-box;">
+                <span th:text="'进程'+${process.id}">进程</span>
+                <span>等待</span>
+            </div>
+        </div>
+    </div>
+
+    <div class=" col-md-12">
+        <h3>——————阻塞队列——————</h3>
+    </div>
+    <div th:each="process:${chokeProcess}">
+        <div class="col-md-1">
+            <div class="navbar-brand alert alert-danger " style="box-sizing: content-box;">
+                <span th:text="'进程'+${process.id}">进程</span>
+                <span>阻塞</span>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+</body>
+</html>
