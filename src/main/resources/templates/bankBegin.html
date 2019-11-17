@@ -49,8 +49,21 @@
             </tr>
         </form>
         <tr>
+            <form action="/remove">
             <td colspan="4">
-
+                <input type="hidden" th:value="${processId}" name="processId">
+                <button type="submit" class="btn btn-success btn-publish">释放该程序资源</button>
+            </td>
+            </form>
+        </tr>
+        <tr>
+            <td colspan="4">
+                <a class="btn btn-success btn-publish" href="/initial" role="button">恢复默认数据</a>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="4">
+                <a class="btn btn-success btn-publish" href="/safety" role="button">安全检查</a>
             </td>
         </tr>
     </table>
@@ -81,6 +94,7 @@
             </tr>
         </div>
     </table>
+    <div class="alert alert-success" role="alert" th:text="${safety}"></div>
 </div>
 </body>
 </html>

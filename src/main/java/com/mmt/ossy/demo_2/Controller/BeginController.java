@@ -40,4 +40,10 @@ public class BeginController {
         model.addAttribute("processId", processId);
         return "bankBegin";
     }
+    @GetMapping("/initial")
+    public String initial() {
+        bankMapper.initialProcess();
+        bankMapper.initialBank();
+        return "redirect:/";
+    }
 }
