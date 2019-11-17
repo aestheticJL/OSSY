@@ -1,4 +1,4 @@
-package com.mmt.ossy.demo.model;
+package com.mmt.ossy.demo_1.model;
 
 import lombok.Data;
 

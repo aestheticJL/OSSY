@@ -1,6 +1,6 @@
-package com.mmt.ossy.demo.Mapper;
+package com.mmt.ossy.demo_1.Mapper;
 
-import com.mmt.ossy.demo.model.ProcessModel;
+import com.mmt.ossy.demo_1.model.ProcessModel;
 import org.apache.ibatis.annotations.*;
 
 import java.util.List;
