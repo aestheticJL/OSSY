@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>ThirdSY</title>
+    <meta http-equiv="Content-Type" content="text/html; charset = UTF-8"/>
+    <link rel="stylesheet" href="/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="/css/bootstrap-theme.min.css"/>
+    <link rel="stylesheet" href="/css/Begin.css"/>
+    <script src="/js/jquery-3.4.1.min.js" type="application/javascript"></script>
+    <script src="/js/bootstrap.min.js" type="application/javascript"></script>
+</head>
+<body>
+<table class="table table-bordered" style="margin: 10px">
+    <tr>
+        <form action="/first">
+            <td>
+                <input type="text" class="form-control" placeholder="请输入进程Id" aria-describedby="sizing-addon1"
+                       name="Id" autocomplete="off">
+            </td>
+            <td>
+                <input type="text" class="form-control" placeholder="请输入进程大小（单位M）" aria-describedby="sizing-addon1"
+                       name="Long" autocomplete="off">
+            </td>
+            <td colspan="4">
+                <button type="submit" class="btn btn-success btn-publish">最先分配</button>
+            </td>
+        </form>
+    </tr>
+    <tr>
+        <form action="/best">
+            <td>
+                <input type="text" class="form-control" placeholder="请输入进程Id" aria-describedby="sizing-addon1"
+                       name="Id" autocomplete="off">
+            </td>
+            <td>
+                <input type="text" class="form-control" placeholder="请输入进程大小（单位M）" aria-describedby="sizing-addon1"
+                       name="Long" autocomplete="off">
+            </td>
+            <td colspan="4">
+                <button type="submit" class="btn btn-success btn-publish">最优分配</button>
+            </td>
+        </form>
+    </tr>
+    <tr>
+        <form action="/worst">
+            <td>
+                <input type="text" class="form-control" placeholder="请输入进程Id" aria-describedby="sizing-addon1"
+                       name="Id" autocomplete="off">
+            </td>
+            <td>
+                <input type="text" class="form-control" placeholder="请输入进程大小（单位M）" aria-describedby="sizing-addon1"
+                       name="Long" autocomplete="off">
+            </td>
+            <td colspan="4">
+                <button type="submit" class="btn btn-success btn-publish">最坏分配</button>
+            </td>
+        </form>
+    </tr>
+    <tr>
+        <form action="/remove">
+            <td>
+                <input type="text" class="form-control" placeholder="请输入进程Id" aria-describedby="sizing-addon1"
+                       name="Id" autocomplete="off">
+            </td>
+            <td colspan="4">
+                <button type="submit" class="btn btn-success btn-publish">撤销该进程</button>
+            </td>
+        </form>
+    </tr>
+</table>
+<div class="col-md-12">
+    <h3>——————图例显示——————</h3>
+</div>
+
+<div class="progress col-md-12">
+    <div th:each="memoryDTO: ${memoryDTOS}"
+         th:class="${memoryDTO.status==0}? 'progress-bar progress-bar-success':'progress-bar progress-bar-danger'"
+         th:style="'width:'+${memoryDTO.Long}+'%'" th:text="${memoryDTO.status==1}?'进程'+${memoryDTO.Id}:''">
+    </div>
+</div>
+</body>
+</html>
